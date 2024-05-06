@@ -9,12 +9,16 @@ from rest_framework.authtoken.models import Token
 def profile_create(
     *,
     user:User,
-    city: int,
-    phonenumber: str,
+    blankDuration: int,
+    pushUpNumbers: int,
+    tall: int,
+    weight: int,
+    fatPercentage: int,
+    level: int,
     img: str,
     ) -> Profile:
     
-    profile = Profile(user=user,city=city, phone_number=phonenumber, image=img)
+    profile = Profile(user=user, weight=weight, fatPercentage=fatPercentage, blankDuration=blankDuration, pushUpNumbers=pushUpNumbers, tall=tall, image=img)
     profile.full_clean()
     profile.save()
     return profile
@@ -26,8 +30,11 @@ def user_create(
     last_name: str,
     username:str,
     password: str,
-    city: int,
-    phonenumber: str,
+    blankDuration: int,
+    pushUpNumbers: int,
+    tall: int,
+    weight: int,
+    fatPercentage: int,
     img: str
     ) -> User:
     
@@ -38,9 +45,7 @@ def user_create(
     token = Token.objects.create(user=user)
     
 
-    profile_create(user=user, city=city,
-                   phonenumber=phonenumber, img=img)
-    
+    profile_create(user=user, weight=weight, fatPercentage=fatPercentage, blankDuration=blankDuration, pushUpNumbers=pushUpNumbers, tall=tall, img=img)
     return user, token.key
 
 def user_update(*, user_id: int, data) -> User:
@@ -57,7 +62,7 @@ def user_update(*, user_id: int, data) -> User:
 
 def profile_update(*, profile_id: int, data):
     profile = Profile.objects.get(id = profile_id)
-    non_side_effect_fields = ['city', 'phone_number', 'image']
+    non_side_effect_fields = ['blankDuration', 'pushUpNumbers', 'tall', 'weight', 'fatPercentage']
     
     profile, has_updated = model_update(
         instance=profile,
