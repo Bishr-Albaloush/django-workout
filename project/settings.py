@@ -31,15 +31,21 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    
     #My Apps,
     'accounts',
-    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    
+    'common',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'drf_spectacular',
     
 ]
 
@@ -103,7 +109,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+SIMPLE_JWT = {
+   
+     # Use JWT 
+     #'AUTH_HEADER_TYPES': ('JWT',),
+      'AUTH_HEADER_TYPES': ('Bearer',),
+     
+}
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -125,3 +137,21 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    # YOUR SETTINGS
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+
+),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'WourkOut API',
+    'DESCRIPTION': 'Your project description',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+     'COMPONENT_SPLIT_REQUEST': True,
+     # OTHER SETTINGS
+}

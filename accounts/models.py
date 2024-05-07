@@ -7,12 +7,12 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     image = models.ImageField(upload_to='profile/')
-    blankDuratin = models.IntegerField()
+    blankDuration = models.IntegerField()
     pushUpNumbers = models.IntegerField()
     tall = models.IntegerField()
     weight = models.IntegerField()
     fatPercentage = models.IntegerField()
-    level = models.IntegerChoices()
+    level = models.IntegerField(blank=True, null=True,)
     def __str__(self):
         return str(self.user)
 

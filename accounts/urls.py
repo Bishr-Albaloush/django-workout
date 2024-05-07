@@ -8,5 +8,5 @@ urlpatterns = [
     path('api/v1/signup/',api.UserCreateApi.as_view(),name='signup'),
     path('api/v1/user_update/<int:user_id>',api.UserUpdateApi.as_view(),name='user_update'),
     path('api/v1/profile_update/<int:profile_id>',api.ProfileUpdateApi.as_view(),name='profile_update'),
-    path('api/v1/profile_get/',api.ProfileDetailApi.as_view(),name='profile_get'),
+    path('api/v1/profile_get/<int:profile_id>',api.ProfileDetailApi.as_view(),name='profile_get'),
 ]

@@ -1,7 +1,8 @@
 from django.contrib.auth.models import User
-from .models import Profile, City
-from job_board_styleguide.common.services import model_update
+from .models import Profile
+from common.services import model_update
 from rest_framework.authtoken.models import Token
+
 
 
 
@@ -61,7 +62,7 @@ def user_update(*, user_id: int, data) -> User:
     return user
 
 def profile_update(*, profile_id: int, data):
-    profile = Profile.objects.get(id = profile_id)
+    profile = Profile.objects.get(user = profile_id)
     non_side_effect_fields = ['blankDuration', 'pushUpNumbers', 'tall', 'weight', 'fatPercentage']
     
     profile, has_updated = model_update(
