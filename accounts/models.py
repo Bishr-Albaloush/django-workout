@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from exercise.models import Program
 # Create your models here.
 
 
@@ -12,6 +13,7 @@ class Profile(models.Model):
     weight = models.IntegerField()
     fatPercentage = models.IntegerField()
     level = models.IntegerField(blank=True, null=True,)
+    program = models.ForeignKey(Program, on_delete=models.SET_NULL, null=True, blank = True)
     def __str__(self):
         return str(self.user)
 
