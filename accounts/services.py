@@ -46,12 +46,12 @@ def user_create(
     token = Token.objects.create(user=user)
     
 
-    profile_create(user=user, weight=weight, fatPercentage=fatPercentage, blankDuration=blankDuration, pushUpNumbers=pushUpNumbers, tall=tall, img=img)
+    profile_create(user=user, weight=weight, fatPercentage=fatPercentage, blankDuration=blankDuration, pushUpNumbers=pushUpNumbers, tall=tall, img=img, level=1)
     return user, token.key
 
 def user_update(*, user_id: int, data) -> User:
     user = User.objects.get(id = user_id)
-    non_side_effect_fields = ['first_name', 'last_name']
+    non_side_effect_fields = ['email', 'first_name', 'last_name']
 
     user, has_updated = model_update(
         instance=user,

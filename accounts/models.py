@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, related_name='user')
     image = models.ImageField(upload_to='profile/')
     blankDuration = models.IntegerField()
     pushUpNumbers = models.IntegerField()
