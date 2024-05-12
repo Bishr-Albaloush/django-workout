@@ -58,7 +58,7 @@ def user_update(*, user_id: int, data) -> User:
 
 def profile_update(*, profile_id: int, data):
     profile = Profile.objects.get(user = profile_id)
-    non_side_effect_fields = ['blankDuration', 'pushUpNumbers', 'tall', 'weight', 'fatPercentage']
+    non_side_effect_fields = ['blankDuration', 'pushUpNumbers', 'tall', 'weight', 'fatPercentage',  'image']
     
     profile, has_updated = model_update(
         instance=profile,

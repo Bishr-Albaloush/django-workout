@@ -13,7 +13,6 @@ class Exercise(models.Model):
     def __str__(self):
         return str(self.name)
 
-
 class Day(models.Model):
     program = models.ForeignKey('Program', on_delete=models.CASCADE, related_name='program')
 
