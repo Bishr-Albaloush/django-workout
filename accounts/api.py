@@ -23,20 +23,20 @@ class UserLoginApi(APIView):
         request=LoginInputSerializer,
         responses={
             200: inline_serializer(
-                name="successfull login",
+                name="LoginSuccessfull",
                 fields={
                     "token": serializers.CharField(default="string"),
                     
                 },
             ),
             400: inline_serializer(
-                name="login faild",
+                name="LoginFailed",
                 fields={
                     "Error": serializers.CharField(default="string"),
                 },
             ),
             403:inline_serializer(
-                name="Forbidden login",
+                name="LoginForbidden",
                 fields={
                     "details": serializers.CharField(default="CSRF Failed: CSRF token from the 'X-Csrftoken' HTTP header incorrect."),
                 },
@@ -82,7 +82,7 @@ class UserCreateApi(APIView):
             operation_id='SignUp',
             request=SignupInputSerializer,
             responses={201: inline_serializer(
-                name="SignUpSuccessfully",
+                name="SignUpSuccessfull",
                 fields={
                     "token": serializers.CharField(default="string"),
                 },
@@ -123,14 +123,14 @@ class UserLogoutApi(APIView):
         
         responses={
             200: inline_serializer(
-                name="LogedoutSuccessfull",
+                name="LogoutSuccessfull",
                 fields={
                     "result_description": serializers.CharField(default="loged out successfully"),
                     
                 },
             ),
             400: inline_serializer(
-                name="LogedoutFailed",
+                name="LogoutFailed",
                 fields={
                     "Error": serializers.CharField(default="string"),
                 },

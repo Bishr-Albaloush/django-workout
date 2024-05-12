@@ -152,7 +152,7 @@ REST_FRAMEWORK = {
 
 SPECTACULAR_SETTINGS = {
     'TITLE': 'WourkOut API',
-    'DESCRIPTION': 'Your project description',
+    'DESCRIPTION': 'Best WorkOut API Ever',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
     'COMPONENT_SPLIT_REQUEST': True,

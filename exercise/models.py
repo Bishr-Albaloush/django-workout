@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import timedelta
 
-FEED_BACK_CHOICES = [(1,"1"),(2,"2"),(3,"3"),(4,"4"),(5,"5")]
+FEED_BACK_CHOICES = [(1,"Foolproof"), (2,"Easy"), (3,"Normal"), (4,"Difficult"), (5,"Fiendish")]
 # Create your models here.
 class Exercise(models.Model):
     day = models.ManyToManyField('Day', related_name='exercise_day')
@@ -11,7 +11,7 @@ class Exercise(models.Model):
     times = models.IntegerField()
     level = models.IntegerField(blank=True, null=True,)
     def __str__(self):
-        return str(self.user)
+        return str(self.name)
 
 
 class Day(models.Model):
@@ -23,7 +23,8 @@ class Program(models.Model):
     feedback = models.IntegerField(choices=FEED_BACK_CHOICES)
     duration_field = models.DurationField(default=timedelta(days=30))
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
-
+    def __str__(self):
+        return str(self.name)
 class Practice(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     exerxise = models.ForeignKey(Exercise, on_delete=models.CASCADE)
