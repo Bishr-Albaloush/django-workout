@@ -69,7 +69,7 @@ class UserCreateApi(APIView):
         first_name = serializers.CharField()
         last_name = serializers.CharField()
         password = serializers.CharField()
-        blankDuration = serializers.IntegerField()
+        blankDuration = serializers.DurationField(default="DD HH:MM:SS.uuuuuu")
         pushUpNumbers = serializers.IntegerField()
         tall = serializers.IntegerField()
         weight = serializers.IntegerField()
@@ -148,7 +148,7 @@ class UserLogoutApi(APIView):
 class ProfileDetailApi(APIView):
     class ProfileOutputSerializer(serializers.Serializer):
         user = UserSerializer()
-        blankDuration = serializers.IntegerField()
+        blankDuration = serializers.DurationField(default="DD HH:MM:SS.uuuuuu")
         pushUpNumbers = serializers.IntegerField()
         tall = serializers.IntegerField()
         weight = serializers.IntegerField()
@@ -231,7 +231,7 @@ class UserUpdateApi(APIView):
                 
 class ProfileUpdateApi(APIView):    
     class ProfileUpdateInputSerializer(serializers.Serializer):
-        blankDuration = serializers.IntegerField() 
+        blankDuration = serializers.DurationField(default="DD HH:MM:SS.uuuuuu") 
         pushUpNumbers = serializers.IntegerField()
         tall = serializers.IntegerField()
         weight = serializers.IntegerField()

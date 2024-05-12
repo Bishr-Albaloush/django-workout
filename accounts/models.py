@@ -7,7 +7,7 @@ from exercise.models import Program
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, related_name='user')
     image = models.ImageField(upload_to='profile/')
-    blankDuration = models.IntegerField()
+    blankDuration = models.DurationField()
     pushUpNumbers = models.IntegerField()
     tall = models.IntegerField()
     weight = models.IntegerField()

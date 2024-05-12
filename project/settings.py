@@ -141,7 +141,7 @@ DATA_UPLOAD_MAX_NUMBER_FIELDS = None
 REST_FRAMEWORK = {
     # YOUR SETTINGS
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        
+        'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.TokenAuthentication',
 

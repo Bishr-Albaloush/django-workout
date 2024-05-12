@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import timedelta
 
 FEED_BACK_CHOICES = [(1,"1"),(2,"2"),(3,"3"),(4,"4"),(5,"5")]
 # Create your models here.
@@ -20,6 +21,8 @@ class Program(models.Model):
     name = models.CharField(max_length=50)
     level = models.IntegerField()
     feedback = models.IntegerField(choices=FEED_BACK_CHOICES)
+    duration_field = models.DurationField(default=timedelta(days=30))
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class Practice(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

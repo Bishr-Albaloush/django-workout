@@ -3,10 +3,6 @@ from .models import Profile
 from common.services import model_update
 from rest_framework.authtoken.models import Token
 
-
-
-
-
 def profile_create(
     *,
     user:User,
@@ -23,7 +19,6 @@ def profile_create(
     profile.full_clean()
     profile.save()
     return profile
-
 
 def user_create(
     email: str,
