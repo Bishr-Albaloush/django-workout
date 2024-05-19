@@ -1,4 +1,4 @@
-from models import Exercise, Day, Program, Practice
+from .models import Exercise, Day, Program, Practice
 from django.db.models import Q
 
 def exercise_view(*, id):

@@ -24,6 +24,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('accounts/', include('accounts.urls', namespace='accounts')),
+    path('exercise/', include('exercise.urls', namespace='exercise')),
     
      # YOUR PATTERNS
     path('schema/', SpectacularAPIView.as_view(), name='schema'),

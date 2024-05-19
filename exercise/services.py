@@ -1,15 +1,17 @@
-from models import *
+from .models import *
 from common.services import model_update
 
 def exercise_create(*,
-    day:Day,
+    days:list = [],
     name: str,
     times: str,
     level: str,
     image: str,)->Exercise:
-    exercise = Exercise(day=day, name=name, times=times, level=level, image=image)
+    exercise = Exercise(name=name, times=times, level=level, image=image)
     exercise.full_clean()
     exercise.save()
+    for i in days:
+        exercise.days.add(i)
     return exercise
 
 def exercise_update(*,
@@ -29,12 +31,12 @@ def exercise_delete(*, exercise_id:int):
     return True
 
 def day_create(*, program:Program,
-    excercises: list | []):
+    exercises: list = []):
     day = Day(program = program)
     day.full_clean()
     day.save()
     
-    for i in excercises:
+    for i in exercises:
         i.day.add(day)
         
     return day
